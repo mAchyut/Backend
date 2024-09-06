@@ -3,7 +3,7 @@ import dbConnect from './db/index.js'
 import app from './app.js'
 
 
-configDotenv('../env')
+configDotenv('./env')
 dbConnect( )
 .then((value)=>{
 

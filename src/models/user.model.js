@@ -52,7 +52,7 @@ const userSchema = new Schema(
 
     if(!this.isModified("password")){ return next()}
 
-     this.password = bcrypt.hash(this.password, 10)
+     this.password = await bcrypt.hash(this.password, 10)
      next()
 })
 
@@ -69,7 +69,7 @@ userSchema.methods.generateAccessToken = function() {
         email: this.email,
         fullName: this.fullName
     },
-    process.env.ACCESS_TOKEN_SECRET,
+         process.env.ACCESS_TOKEN_SECRET,
     {
         expiresIn: process.env.ACCESS_TOKEN_EXPIRY
     }
